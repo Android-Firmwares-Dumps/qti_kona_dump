@@ -1,0 +1,14 @@
+# qssi-user 12 SKQ1.211006.001 1645100394154 release-keys
+- manufacturer: 
+- platform: kona
+- codename: kona
+- flavor: qssi-user
+- release: 12
+- id: SKQ1.211006.001
+- incremental: 1645100394154
+- tags: release-keys
+- fingerprint: qti/kona/kona:12/SKQ1.210216.001/1645100250659:user/release-keys
+- is_ab: true
+- brand: qti
+- branch: qssi-user-12-SKQ1.211006.001-1645100394154-release-keys
+- repo: qti_kona_dump
