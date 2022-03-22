@@ -1,0 +1,20 @@
+service update_engine /system/bin/update_engine --logtostderr --logtofile --foreground
+    class late_start
+    user root
+    group root system wakelock inet cache media_rw everybody
+    writepid /dev/cpuset/system-background/tasks /dev/blkio/background/tasks
+    disabled
+
+on property:ro.boot.slot_suffix=*
+    enable update_engine
+
+# sam.li@ANDROID.UPDATABILITY,add for update engine log
+on property:sys.oplus.update_engine.log=1
+    copy_update_engine_log /data/misc/oplus_update_engine_log /mnt/vendor/oplusreserve/update_engine_log
+    setprop sys.oplus.update_engine.log 0
+
+on property:vold.fbe.decrypted=1
+    ##ifdef OPLUS_FORCE_AB_OTA_UPDATER
+    #sam.li@SYSTEM,2021/11/15,add for update_engine upgrading reserve.img
+    create_reserve_dir /data/reserve 0775 system system
+    ##endif /* OPLUS_FORCE_AB_OTA_UPDATER */
